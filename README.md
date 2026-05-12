@@ -107,19 +107,20 @@ int main() {
 
 ```mermaid
 stateDiagram-v2
-    [*] --> top
-    top --> parent : _topInitialTrans
-    parent --> child1 : INIT
-    parent --> child2 : TOGGLE<br/>(if child1)
-    parent --> child1 : TOGGLE<br/>(if child2)
+    [*] --> parent : _topInitialTrans
+    state "parent (composite)" as parent {
+        [*] --> child1 : INIT
+        child1 --> child2 : TOGGLE
+        child2 --> child1 : TOGGLE
+    }
     note right of parent
-        Handles TOGGLE<br/>
+        TOGGLE handled in parent<br/>
         Sibling transitions<br/>
-        no parent e/x
+        Parent e/x only on outer trans
     end note
 ```
 
-**~20 lines implement this UML HSM**: Initial `top->parent->child1`, sibling toggles `child1<->child2` (parent stays active).
+**~20 lines implement this UML HSM**: Composite `parent` with children `child1`/`child2`; initial `top->parent->child1`; sibling toggles (parent stays active).
 
 ## 📚 Examples
 
