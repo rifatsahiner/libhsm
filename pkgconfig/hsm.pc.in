@@ -1,0 +1,12 @@
+
+prefix=@CMAKE_INSTALL_PREFIX@
+exec_prefix=${prefix}
+libdir=${exec_prefix}/lib
+includedir=${prefix}/include
+
+Name: hsm
+Description: Hierarchical state-machine library.
+Version: @PROJECT_VERSION@
+URL: https://github.com/rifatsahiner/libhsm
+Libs: -L${libdir} -lhsm
+Cflags: -I${includedir}/hsm
