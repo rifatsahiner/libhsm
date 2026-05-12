@@ -14,32 +14,6 @@ make
 
 ## Available Examples
 
-### Basic Usage (`basic_usage/`)
-
-A comprehensive example demonstrating a traffic light state machine that shows:
-
-- **Custom State Machine Class**: Inherits from `Hsm::StateMachine`
-- **Multiple States**: Red, Yellow, Green, and Maintenance states
-- **Custom Signals**: Timer events, maintenance requests, etc.
-- **Extended Events**: Events with additional data (TimerEvent with duration)
-- **Signal-Only Events**: Simple events without extra data
-- **State Transitions**: Using `_trans()` to change states
-- **Entry/Exit Actions**: Automatic execution during state changes
-- **Event Dispatching**: Processing events and observing state changes
-
-#### Running the Example
-
-```bash
-./examples/basic_usage/hsm_basic_example
-```
-
-The example simulates a traffic light system that:
-1. Starts in RED state
-2. Transitions through GREEN → YELLOW → RED cycle based on timer events
-3. Can enter MAINTENANCE mode from any state
-4. Ignores timer events while in maintenance
-5. Returns to RED state when maintenance is complete
-
 ### UML Oven Example (`uml_oven/`)
 
 An interactive example that implements the oven/toaster UML state machine from the provided drawing:
@@ -77,9 +51,52 @@ The example starts with:
 3. Toast color set to `medium`
 4. Initial transition path `heating -> toasting`
 
+### UML Calculator Example (`uml_calculator/`)
+
+A graphical calculator example that implements the calculator UML state machine (Figure 2.18) with a complete GUI interface:
+
+- **Hierarchical State Machine**: Implements multiple levels of state nesting for calculator operations
+- **Event-Driven Architecture**: Handles digit input, operators, decimal points, and special functions through events
+- **Error Handling**: Manages division by zero, overflow, and invalid operations with dedicated error states
+- **GUI Interface**: Built with FLTK library providing an interactive calculator interface
+- **State Persistence**: Maintains calculator state across operations with proper operand handling
+- **Input Validation**: Ensures proper number formatting and operation sequencing
+
+#### Running the Example
+
+```bash
+./examples/uml_calculator/uml_calculator
+```
+
+#### Interface Features
+
+The calculator provides a standard calculator interface with:
+
+- **Digit Buttons**: 0-9 for number input
+- **Operator Buttons**: +, -, *, / for arithmetic operations
+- **Decimal Point**: . for floating-point numbers
+- **Equals**: = to compute results
+- **Clear Functions**: C (clear all), CE (clear entry)
+- **Display**: Shows current number or result
+- **Error Display**: Shows "Error" for invalid operations
+
+#### State Machine Features
+
+The example demonstrates:
+1. Initial state handling and number entry
+2. Operator precedence and operand storage
+3. Decimal number input and formatting
+4. Error recovery mechanisms
+5. State transitions for different input contexts
+
+The example starts with:
+1. Display shows `0`
+2. Ready for number input
+3. No pending operations
+
 ### UML Hypothetical Example (`uml_hypothetical/`)
 
-An interactive example that implements the hypothetical UML state machine shown in the provided attachment:
+An interactive example that implements the hypothetical UML state machine that has all possible transitions shown in the provided attachment:
 
 - **Deep Hierarchy**: Demonstrates `s`, `s1`, `s11`, `s2`, `s21`, and `s211`
 - **All Transition Topologies**: Exercises self, sibling, ancestor, descendant, and inherited transitions
